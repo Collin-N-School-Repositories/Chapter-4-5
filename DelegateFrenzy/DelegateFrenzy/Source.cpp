@@ -22,31 +22,32 @@ int countvotes(){
 		firstChar = votes[0];
 		for (string::size_type i = 0; i < votes.length(); ++i)
 		{
-			if (count == 1){
+			if (count == 0){
 				if (votes[i] == firstChar)
 				{
 					++candidate1;
 					candidateone = firstChar;
-					votes.erase(std::remove(votes.begin(), votes.end(), firstChar), votes.end());
+					
+				}
+			}
+			else if (count == 1){
+				if (votes[i] == firstChar)
+				{
+					++candidate2;
+					candidatetwo = firstChar;
+					
 				}
 			}
 			else if (count == 2){
 				if (votes[i] == firstChar)
 				{
-					++candidate2;
-					candidatetwo = firstChar;
-					votes.erase(std::remove(votes.begin(), votes.end(), firstChar), votes.end());
-				}
-			}
-			else if (count == 3){
-				if (votes[i] == firstChar)
-				{
 					++candidate3;
 					candidatethree = firstChar;
-					votes.erase(std::remove(votes.begin(), votes.end(), firstChar), votes.end());
+				
 				}
 			}
 		}
+		votes.erase(std::remove(votes.begin(), votes.end(), firstChar), votes.end());
 		++count;
 	} while (votes != "");
 	return candidate1,candidate2,candidate3;
@@ -90,7 +91,7 @@ if (myfile.is_open())
 	'\n';
 	myfile >> votes;
 	countvotes();
-	//canaditeMath();
+	canaditeMath();
 	cout << "The Votes have been counted the results are below " << endl;
 	cout << candidateone << ":" << candidate1 << endl;
 	cout << candidatetwo << ":" << candidate2 << endl;

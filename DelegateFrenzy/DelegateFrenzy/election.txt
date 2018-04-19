@@ -1,2 +1,2 @@
-6
-AABBCC
+8
+vcccbbbb
